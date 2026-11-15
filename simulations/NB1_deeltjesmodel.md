@@ -905,7 +905,7 @@ class ParticleClass:
         ### YOUR CODE HERE ###
         dx = self.r[0] - other.r[0]
         dy = self.r[1] - other.r[1]
-        rr = R
+        rr = self.R + other.R
         return  dx**2+dy**2 < rr**2 
 ```
 
@@ -958,8 +958,10 @@ def update(frame):
     # botsing tussen de deeltjes onderling
     if particleA.collide_detection(particleB):
         ### YOUR CODE HERE ###
-
-
+        particleA.v[0] = -particleA.v[0]
+        particleA.v[1] = -particleA.v[1]
+        particleB.v[0] = -particleB.v[0]
+        particleB.v[1] = -particleB.v[1]
     # botsing met de wand
     if particleA.r[0]**2>100: 
         particleA.v[0] = -particleA.v[0]
